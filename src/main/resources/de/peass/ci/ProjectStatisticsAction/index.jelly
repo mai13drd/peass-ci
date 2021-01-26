@@ -14,6 +14,9 @@
 				<li>
 					Post-Build Steps: ${it.postBuildStepsCount}
 				</li>
+				<li>
+					tValuesMap: ${it.tvaluesMap}
+				</li>
 			</ul>
 
 		</l:main-panel>
