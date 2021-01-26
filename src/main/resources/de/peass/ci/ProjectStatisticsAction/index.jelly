@@ -19,6 +19,30 @@
 				</li>
 			</ul>
 
+			<div>
+				<style>
+					table, th, td {
+					border: 1px solid black;
+					}
+				</style>
+
+				<h1>tValues</h1>
+
+				<table>
+					<tr>
+						<th>buildNumber</th>
+						<th>tValue</th>
+					</tr>
+					<j:forEach var="tValuesMap"
+						items="${it.tvaluesMap.entrySet()}">
+						<tr>
+							<td>${tValuesMap.getKey()}</td>
+							<td>${tValuesMap.getValue()}</td>
+						</tr>
+					</j:forEach>
+				</table>
+			</div>
+
 		</l:main-panel>
 	</l:layout>
 </j:jelly>
