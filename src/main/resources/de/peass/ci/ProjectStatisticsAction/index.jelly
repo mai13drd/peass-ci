@@ -14,9 +14,6 @@
 				<li>
 					Post-Build Steps: ${it.postBuildStepsCount}
 				</li>
-				<li>
-					tValuesMap: ${it.tvaluesMap}
-				</li>
 			</ul>
 
 			<div>
@@ -42,6 +39,46 @@
 					</j:forEach>
 				</table>
 			</div>
+
+			<div id='tvaluePlot'>
+
+			</div>
+
+			<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+
+			<script>
+				var keys = new Array();
+				var values = new Array();
+				<j:forEach var="tValuesMap"
+					items="${it.tvaluesMap.entrySet()}">
+					keys.push("${tValuesMap.getKey()}");
+					values.push("${tValuesMap.getValue()}");
+				</j:forEach>
+
+				var trace = {
+				x: keys,
+				y: values,
+				mode:
+				'markers'
+				};
+
+				var data = [ trace ];
+
+				var
+				layout =
+				{
+				title: { text: "tValues per build"},
+				xaxis: { title: {
+				text: "Buildnumber"} },
+				yaxis: { title: { text: "tValue"} },
+				height: 400,
+				width: 900
+				};
+
+				Plotly.newPlot('tvaluePlot',
+				data,
+				layout);
+			</script>
 
 		</l:main-panel>
 	</l:layout>
