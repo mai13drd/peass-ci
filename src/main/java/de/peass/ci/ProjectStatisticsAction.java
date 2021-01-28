@@ -21,9 +21,9 @@ import hudson.model.Project;
 
 public class ProjectStatisticsAction implements Action {
 
-   private Project project;
+   private Project<?,?> project;
 
-   public ProjectStatisticsAction(Project project) {
+   public ProjectStatisticsAction(Project<?,?> project) {
       this.project = project;
    }
 
@@ -43,7 +43,6 @@ public class ProjectStatisticsAction implements Action {
       for (final String buildNumber : directories) {
          try {
             final String value = getValueFromXML("de.peass.analysis.changes.Change", "tvalue", buildNumber);
-            // System.out.println("Integer.parseInt(buildNumber), value: " + Integer.parseInt(buildNumber) + " " + value);
             tValuesMap.put(Integer.parseInt(buildNumber), value);
          } catch (ParserConfigurationException | SAXException e) {
             // TODO Auto-generated catch block
