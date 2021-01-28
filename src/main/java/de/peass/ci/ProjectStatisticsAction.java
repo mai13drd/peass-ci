@@ -72,7 +72,7 @@ public class ProjectStatisticsAction implements Action {
       final NodeList subnodes;
       try {
          subnodes = element.getElementsByTagName(subTagName).item(0).getChildNodes();
-      } catch (Exception e) {
+      } catch (NullPointerException e) {
          System.out.println("Element is null!");
          return null;
       }
