@@ -16,32 +16,57 @@
 				</li>
 			</ul>
 
-			<div>
-				<style>
-					table, th, td {
-					border: 1px solid black;
-					}
-				</style>
+			<style>
+				#parent {
+				display: flex;
+				background: #1f2e2e;
+				}
 
-				<h1>tValues</h1>
+				#tableDiv {
+				width:
+				20%;
+				background: #ccffff;
+				text-align: center;
+				}
 
-				<table>
-					<tr>
-						<th>buildNumber</th>
-						<th>tValue</th>
-					</tr>
-					<j:forEach var="tValuesMap"
-						items="${it.tvaluesMap.entrySet()}">
+				#tvaluePlot {
+				/* Grow to rest of container */
+				flex: 1;
+				}
+
+				.tTable table, td, th {
+				border: 2px solid black;
+				}
+
+				table {
+				width: 90%;
+				border-collapse:
+				collapse;
+				text-align: center;
+				margin: auto;
+				}
+			</style>
+
+			<div id="parent">
+				<div id="tableDiv">
+					<h1>tValues</h1>
+
+					<table class="tTable">
 						<tr>
-							<td>${tValuesMap.getKey()}</td>
-							<td>${tValuesMap.getValue()}</td>
+							<th>buildNumber</th>
+							<th>tValue</th>
 						</tr>
-					</j:forEach>
-				</table>
-			</div>
+						<j:forEach var="tValuesMap"
+							items="${it.tvaluesMap.entrySet()}">
+							<tr>
+								<td>${tValuesMap.getKey()}</td>
+								<td>${tValuesMap.getValue()}</td>
+							</tr>
+						</j:forEach>
+					</table>
+				</div>
 
-			<div id='tvaluePlot'>
-
+				<div id="tvaluePlot"></div>
 			</div>
 
 			<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
@@ -71,8 +96,6 @@
 				xaxis: { title: {
 				text: "Buildnumber"} },
 				yaxis: { title: { text: "tValue"} },
-				height: 400,
-				width: 900
 				};
 
 				Plotly.newPlot('tvaluePlot',
